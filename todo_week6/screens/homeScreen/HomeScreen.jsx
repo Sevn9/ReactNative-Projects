@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   StyleSheet,
   Text,
   View,
-  ScrollView,
   TouchableOpacity,
-  Image,
   TextInput,
   FlatList,
 } from "react-native";
 import TodoLine from "./components/TodoLine";
 
 const HomeScreen = ({ navigation }) => {
-  const [onChange, setOnChange] = useState(false);
   const [todos, setTodos] = useState([]);
   const [completedTodos, setcompletedTodos] = useState([]);
   const [text, setText] = useState("");
@@ -50,7 +47,6 @@ const HomeScreen = ({ navigation }) => {
     setcompletedTodos(newCompletedTodos);
   };
   const removeCompletedTodos = (index) => {
-    setOnChange(true);
     console.log("вызвана функция removecompletedTodos");
     console.log(index);
     let newCompletedTodos = [...completedTodos];
@@ -58,7 +54,6 @@ const HomeScreen = ({ navigation }) => {
       newCompletedTodos.splice(index, 1);
     }
     setcompletedTodos(newCompletedTodos);
-    setOnChange(false);
   };
   console.log(completedTodos);
   return (
