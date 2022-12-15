@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import TimerStore from "../store/timer";
 import { observer } from "mobx-react-lite";
-
+let timerID;
 const Timer = observer(() => {
+  const [count, setIsCount] = useState(false);
+
+  function startTimer() {
+    console.log("count", count);
+    if (!count) {
+      timerID = setInterval(() => {
+        TimerStore.startIncrease();
+      }, 1000);
+    }
+    setIsCount(true);
+  }
+  function stopTimer() {
+    console.log("pressed stopTimer", timerID);
+    clearInterval(timerID);
+    setIsCount(false);
+  }
+  function clearTimer() {
+    if (count) {
+      stopTimer();
+    }
+    TimerStore.clearTimer();
+    setIsCount(false);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Timer</Text>
@@ -12,25 +36,13 @@ const Timer = observer(() => {
       </Text>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonStyle}>
-          <Button
-            onPress={() => TimerStore.startTimer()}
-            title="Start"
-            color="#841584"
-          />
+          <Button onPress={() => startTimer()} title="Start" color="#841584" />
         </View>
         <View style={styles.buttonStyle}>
-          <Button
-            onPress={() => TimerStore.stopTimer()}
-            title="Stop"
-            color="#841584"
-          />
+          <Button onPress={() => stopTimer()} title="Stop" color="#841584" />
         </View>
         <View style={styles.buttonStyle}>
-          <Button
-            onPress={() => TimerStore.clearTimer()}
-            title="Clear"
-            color="#841584"
-          />
+          <Button onPress={() => clearTimer()} title="Clear" color="#841584" />
         </View>
       </View>
     </View>
