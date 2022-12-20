@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   acceptLogo: {
-    backgroundColor: "pink",
+    //backgroundColor: "pink",
     borderWidth: 5,
     width: 100,
     height: 100,

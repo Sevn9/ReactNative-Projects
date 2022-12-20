@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
-    backgroundColor: "green",
     marginTop: 50,
   },
   acceptButton: {
