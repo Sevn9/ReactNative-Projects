@@ -16,9 +16,6 @@ const HomeScreen = observer(() => {
   return (
     <>
       <FlatList
-        contentContainerStyle={{
-          backgroundColor: "blue",
-        }}
         data={productStore.products}
         renderItem={renderHomeCard}
         keyExtractor={(item) => item.id}
@@ -32,7 +29,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
     alignItems: "center",
   },
 });

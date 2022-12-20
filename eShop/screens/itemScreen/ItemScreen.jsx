@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Icon } from "@rneui/themed";
 import productStore from "../../store/productStore";
+import cartStore from "../../store/сartStore";
 
 const ItemScreen = ({ route }) => {
   const { itemId } = route.params;
@@ -20,6 +21,10 @@ const ItemScreen = ({ route }) => {
   const setLikeFunc = (id) => {
     productStore.setLike(id);
     setIsLiked(!isLiked);
+  };
+  const addToCart = (id) => {
+    cartStore.addCart(id);
+    console.log("cart added id:", id);
   };
   return (
     <ScrollView>
@@ -77,7 +82,7 @@ const ItemScreen = ({ route }) => {
               <Text style={styles.textButton}>Назад</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => addToCart(model.id)}>
             <View style={styles.buttonAdd}>
               <Text style={styles.textButton}>Добавить в корзину</Text>
             </View>
