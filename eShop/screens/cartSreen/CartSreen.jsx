@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -205,14 +205,3 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
 });
-
-{
-  /* <FlatList
-        contentContainerStyle={{
-          backgroundColor: "blue",
-        }}
-        data={CartStore.cartItems}
-        renderItem={renderCartList}
-        keyExtractor={(cartItem) => cartItem[0][1]}
-      /> */
-}
